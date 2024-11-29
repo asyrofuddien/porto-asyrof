@@ -15,7 +15,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: 'Asyrofuddien',
+  title: 'Muhammad Asyrofuddien - Backend Developer',
   description: "i'm backend",
   icons: {
     icon: '/img/asyrof.png',
@@ -31,15 +31,23 @@ export default function RootLayout({
     <>
       <html lang="en" className="!scroll-smooth">
         <Head>
-          <meta property="twitter:image" content="Twitter link preview image URL"></meta>
-          <meta property="twitter:card" content="summary_large_image"></meta>
-          <meta property="twitter:title" content="Twitter link preview title"></meta>
-          <meta property="twitter:description" content="Twitter link preview description"></meta>
-          <meta property="og:image" content="Link preview image URL"></meta>
-          <meta property="og:site_name" content="Link preview site name"></meta>
+          <meta property="twitter:image" content="/img/heroLaptop.png"></meta>
+          <meta property="twitter:card" content="Muhammad Asyrofuddien"></meta>
+          <meta property="twitter:title" content="Muhammad Asyrofuddien - Backend Developer"></meta>
+          <meta
+            property="twitter:description"
+            content="backend developer skilled in Node.js, Express, MongoDB, GraphQL, REST APIs, and Laravel, dedicated to building robust and
+          scalable systems with over a year of professional experience."
+          ></meta>
+          <meta property="og:image" content="/img/heroLaptop.png"></meta>
+          <meta property="og:site_name" content="Muhammad Asyrofuddien - Backend Developer"></meta>
           <meta property="og:title" content="Link preview title"></meta>
-          <meta property="og:description" content="Link preview description" />
-          <meta property="og:url" content="Canonical link preview URL"></meta>
+          <meta
+            property="og:description"
+            content="backend developer skilled in Node.js, Express, MongoDB, GraphQL, REST APIs, and Laravel, dedicated to building robust and
+          scalable systems with over a year of professional experience."
+          />
+          <meta property="og:url" content="https://porto-asyrof.vercel.app/"></meta>
         </Head>
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
       </html>
