@@ -5,10 +5,10 @@ const Playlist = require('./model/playlistSchema');
 const User = require('./model/userSchema');
 const bcrypt = require('bcrypt');
 const moment = require('moment');
-const fetch = require('node-fetch');
+// const fetch = require('node-fetch');
 const util = require('util');
-const { calculateDurationInSeconds, formatDuration } = require('./controller/calculateDuration');
-const { PlaySong } = require('./controller/cronJobSong');
+// const { calculateDurationInSeconds, formatDuration } = require('./controller/calculateDuration');
+// const { PlaySong } = require('./controller/cronJobSong');
 const typeDefs = gql`
   type Song {
     _id: ID!
@@ -759,81 +759,81 @@ const resolvers = {
         throw new Error(error.message);
       }
     },
-    Webhook: async (_, { input }, context) => {
-      /*
-       A webhook is a method for web applications to communicate with each other in real-time. 
-       It is a way to send automated, HTTP POST requests from one server to another when a specific event or trigger occurs. 
-       Webhooks are commonly used in various scenarios, such as in web development, online services, and automation.
-       */
-      try {
-        // verifyJWT(contex);
-        // console.log(input.song_list[0].title);
-        let songCount = 0; // just for check total song
-        let playlistCount = 0; // just for check total playlist
+    // Webhook: async (_, { input }, context) => {
+    //   /*
+    //    A webhook is a method for web applications to communicate with each other in real-time.
+    //    It is a way to send automated, HTTP POST requests from one server to another when a specific event or trigger occurs.
+    //    Webhooks are commonly used in various scenarios, such as in web development, online services, and automation.
+    //    */
+    //   try {
+    //     // verifyJWT(contex);
+    //     // console.log(input.song_list[0].title);
+    //     let songCount = 0; // just for check total song
+    //     let playlistCount = 0; // just for check total playlist
 
-        //sanity check
-        if (input && input.length) {
-          for (const playlist of input) {
-            playlistCount++;
-            if (
-              playlist.playlist_name &&
-              playlist.description &&
-              playlist.song_list &&
-              playlist.song_list.length &&
-              playlist.creator &&
-              playlist.total_favorite
-            ) {
-              for (const song of playlist.song_list) {
-                songCount++;
-                // console.log(song.title);
-                if (!song.title || !song.artist || !song.year || !song.duration || !song.genre || !song.album) {
-                  throw new Error('All songs field must be filled');
-                }
-              }
-            }
-          }
+    //     //sanity check
+    //     if (input && input.length) {
+    //       for (const playlist of input) {
+    //         playlistCount++;
+    //         if (
+    //           playlist.playlist_name &&
+    //           playlist.description &&
+    //           playlist.song_list &&
+    //           playlist.song_list.length &&
+    //           playlist.creator &&
+    //           playlist.total_favorite
+    //         ) {
+    //           for (const song of playlist.song_list) {
+    //             songCount++;
+    //             // console.log(song.title);
+    //             if (!song.title || !song.artist || !song.year || !song.duration || !song.genre || !song.album) {
+    //               throw new Error('All songs field must be filled');
+    //             }
+    //           }
+    //         }
+    //       }
 
-          const response = await fetch('https://webhook.site/b09df7a0-a300-4e0c-ac7e-165d5c646226', {
-            method: 'POST',
-            body: JSON.stringify(input),
-            headers: { 'Content-Type': 'application/json' },
-          });
-          //add sanity response
-          const data = await response.json();
+    //       const response = await fetch('https://webhook.site/b09df7a0-a300-4e0c-ac7e-165d5c646226', {
+    //         method: 'POST',
+    //         body: JSON.stringify(input),
+    //         headers: { 'Content-Type': 'application/json' },
+    //       });
+    //       //add sanity response
+    //       const data = await response.json();
 
-          if (!data) {
-            throw new Error('Data not fetched');
-          }
+    //       if (!data) {
+    //         throw new Error('Data not fetched');
+    //       }
 
-          const result = data.map((dataPlaylist) => {
-            return {
-              msg: `${dataPlaylist.playlist_name} playlist successfully created`,
-              ...dataPlaylist,
-            };
-          });
-          // console.log(util.inspect(result, { depth: 100 }));
+    //       const result = data.map((dataPlaylist) => {
+    //         return {
+    //           msg: `${dataPlaylist.playlist_name} playlist successfully created`,
+    //           ...dataPlaylist,
+    //         };
+    //       });
+    //       // console.log(util.inspect(result, { depth: 100 }));
 
-          console.log({
-            total_song: songCount,
-            total_playlist: playlistCount,
-          });
-          return result;
-          // return {
-          //   msg: 'Create Playlists Success',
-          //   playlist_name: setPlaylistName,
-          //   creator: setCreator,
-          //   total_playlist: playlistCount,
-          //   total_songs: songCount,
-          // };
-        }
+    //       console.log({
+    //         total_song: songCount,
+    //         total_playlist: playlistCount,
+    //       });
+    //       return result;
+    //       // return {
+    //       //   msg: 'Create Playlists Success',
+    //       //   playlist_name: setPlaylistName,
+    //       //   creator: setCreator,
+    //       //   total_playlist: playlistCount,
+    //       //   total_songs: songCount,
+    //       // };
+    //     }
 
-        return {
-          playlist_name: 'Error',
-        };
-      } catch (error) {
-        throw new Error(error.message);
-      }
-    },
+    //     return {
+    //       playlist_name: 'Error',
+    //     };
+    //   } catch (error) {
+    //     throw new Error(error.message);
+    //   }
+    // },
     PlaySong: async () => {
       try {
         const song = await PlaySong();

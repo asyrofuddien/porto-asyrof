@@ -17,7 +17,7 @@ These are essential components for defining the schema (type definitions) and th
 */
 const executableSchema = makeExecutableSchema({ typeDefs, resolvers }); // Create an executable schema using type definitions and resolvers
 const protectedSchema = applyMiddleware(executableSchema); // Apply middleware to the executable schema to add functionality like authentication and authorization
-const { songLoader, PlaylistLoader } = require('./loader');
+// const { songLoader, PlaylistLoader } = require('./loader');
 // Create an Apollo Server instance with the protected schema and context setup
 
 const conn = (app) => {
@@ -25,8 +25,8 @@ const conn = (app) => {
     schema: protectedSchema, // Set the schema to the protected schema (with applied middleware)
     context: function ({ req }) {
       return {
-        songLoader,
-        PlaylistLoader,
+        // songLoader,
+        // PlaylistLoader,
         req: req,
       };
     },
