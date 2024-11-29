@@ -52,10 +52,13 @@ const ContactComponent: React.FC = () => {
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className={`p-4 rounded-full ${link.color} transition-transform transform hover:scale-110`}
+              className="flex flex-col items-center p-4 rounded-full transition-transform transform hover:scale-110"
               aria-label={link.platform}
             >
-              {link.icon}
+              {/* Icon */}
+              <div className={`flex items-center justify-center w-16 h-16 rounded-full ${link.color}`}>{link.icon}</div>
+              {/* Text */}
+              <span className="mt-2 text-sm font-medium">{link.platform}</span>
             </a>
           ))}
         </div>
