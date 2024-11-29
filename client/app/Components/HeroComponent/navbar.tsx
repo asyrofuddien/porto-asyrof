@@ -35,6 +35,11 @@ const NavbarComponent: React.FC = () => {
                 </a>
               </li>
               <li>
+                <a href="#article" className="hover:text-yellow-400">
+                  Articles
+                </a>
+              </li>
+              <li>
                 <a href="#contact" className="hover:text-yellow-400">
                   Contact
                 </a>

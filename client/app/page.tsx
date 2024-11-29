@@ -4,6 +4,7 @@ import ProjectsComponent from './projects/page';
 import HeroComponent from './Components/HeroComponent/hero';
 import StackComponent from './Components/HeroComponent/stack';
 import ContactComponent from './contact/page';
+import ArticleComponent from './Articles/page';
 
 function Page() {
   return (
@@ -23,6 +24,10 @@ function Page() {
         {/* Projects Section */}
         <section id="projects">
           <ProjectsComponent />
+        </section>
+
+        <section id="article">
+          <ArticleComponent />
         </section>
       </main>
 
