@@ -45,7 +45,7 @@ const ContactComponent: React.FC = () => {
       <div className="max-w-4xl mx-auto text-center">
         <h1 className="text-3xl font-bold mb-6">Contact</h1>
         <p className="text-lg mb-8">Feel free to reach out to me through any of the platforms below!</p>
-        <div className="flex justify-center space-x-8">
+        <div className="flex justify-center flex-wrap gap-8">
           {contactLinks.map((link) => (
             <a
               key={link.platform}
@@ -56,7 +56,12 @@ const ContactComponent: React.FC = () => {
               aria-label={link.platform}
             >
               {/* Icon */}
-              <div className={`flex items-center justify-center w-16 h-16 rounded-full ${link.color}`}>{link.icon}</div>
+              <div
+                className={`flex items-center justify-center rounded-full ${link.color} 
+          w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20`}
+              >
+                {link.icon}
+              </div>
               {/* Text */}
               <span className="mt-2 text-sm font-medium">{link.platform}</span>
             </a>
