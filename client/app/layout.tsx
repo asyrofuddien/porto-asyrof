@@ -3,6 +3,8 @@ import localFont from 'next/font/local';
 import Head from 'next/head'; // Import Head
 import './globals.css';
 
+import { SpeedInsights } from '@vercel/speed-insights/next';
+
 const geistSans = localFont({
   src: './fonts/Roboto-Regular.ttf',
   variable: '--font-geist-sans',
@@ -49,7 +51,10 @@ export default function RootLayout({
           />
           <meta property="og:url" content="https://porto-asyrof.vercel.app/"></meta>
         </Head>
-        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
+        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+          {children}
+          <SpeedInsights />
+        </body>
       </html>
     </>
   );
