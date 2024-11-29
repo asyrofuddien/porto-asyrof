@@ -3,8 +3,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { AiOutlineMenu, AiOutlineClose, AiFillSmile } from 'react-icons/ai'; // Import smile icon
-import HeroComponent from './hero';
-import StackComponent from './stack';
 
 const NavbarComponent: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -73,8 +71,8 @@ const NavbarComponent: React.FC = () => {
                 </a>
               </li>
               <li>
-                <a href="#testimonials" onClick={() => setIsMenuOpen(false)}>
-                  Testimonials
+                <a href="#article" onClick={() => setIsMenuOpen(false)}>
+                  Articles
                 </a>
               </li>
               <li>
