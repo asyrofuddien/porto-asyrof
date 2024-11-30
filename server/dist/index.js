@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const route_1 = require("./routes/route");
+// import { routes } from './routes/route';
 const connectionMongo_1 = require("./db/connectionMongo");
 const graphConnections_1 = require("./graphql/graphConnections");
 const cors_1 = __importDefault(require("cors"));
@@ -16,5 +16,5 @@ const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
 (0, connectionMongo_1.conn)();
 // *************** routes call
-(0, route_1.routes)(app);
+// routes(app);
 (0, graphConnections_1.connGraphQl)(app);
