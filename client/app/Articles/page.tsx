@@ -1,5 +1,4 @@
 import React from 'react';
-import NavbarComponent from '../Components/HeroComponent/navbar';
 
 interface Article {
   id: string;
