@@ -19,7 +19,7 @@ const connGraphQl = async (app: express.Application): Promise<void> => {
     }),
   });
 
-  const port = Number(process.env.PORT); // Define the port for the server
+  const port = Number(process.env.PORT || 3000); // Define the port for the server
 
   // Start the Apollo Server before applying middleware
   await server.start();
