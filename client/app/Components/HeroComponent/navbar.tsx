@@ -1,4 +1,4 @@
-'use clinet';
+'use client';
 
 import { SetStateAction, useState } from 'react';
 import { AiFillSmile, AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
