@@ -1,18 +1,18 @@
 'use client';
 import React from 'react';
-import { useQuery, gql } from '@apollo/client';
+// import { useQuery, gql } from '@apollo/client';
 
-const projectsData = gql`
-  query GetAllProjects {
-    GetAllProjects {
-      _id
-      description
-      image
-      link
-      project_name
-    }
-  }
-`;
+// const projectsData = gql`
+//   query GetAllProjects {
+//     GetAllProjects {
+//       _id
+//       description
+//       image
+//       link
+//       project_name
+//     }
+//   }
+// `;
 
 const projects = [
   {

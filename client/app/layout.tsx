@@ -4,8 +4,8 @@ import './globals.css';
 
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/react';
-import { ApolloProvider } from '@apollo/client';
-import createApolloClient from './lib/apolloClient';
+// import { ApolloProvider } from '@apollo/client';
+// import createApolloClient from './lib/apolloClient';
 
 // Fonts
 const geistSans = localFont({

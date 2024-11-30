@@ -7,9 +7,9 @@ import StackComponent from './Components/HeroComponent/stack';
 import ContactComponent from './contact/page';
 import ArticleComponent from './Articles/page';
 import createApolloClient from './lib/apolloClient';
-import { ApolloProvider } from '@apollo/client';
+// import { ApolloProvider } from '@apollo/client';
 
-const client = createApolloClient();
+// const client = createApolloClient();
 
 function Page() {
   return (
