@@ -4,15 +4,15 @@ const ProjectTypeDefs = gql`
   # Define the Project type
   type Project {
     # Unique identifier for the project
-    _id: ID!
+    _id: ID
     # Name of the project
-    project_name: String!
+    project_name: String
     # Description of the project
-    description: String!
+    description: String
     # GitHub or related link for the project
-    link: String!
+    link: String
     # URL of the project's image
-    image: String!
+    image: String
   }
 
   input ProjectInput {
@@ -28,19 +28,19 @@ const ProjectTypeDefs = gql`
     GetAllProjects: [Project!]!
 
     # Query to get a single project by its ID
-    GetProjectById(id: ID!): Project
+    GetProjectById(_id: ID!): Project
   }
 
   # Define the Mutation type
   type Mutation {
     # Create a new project
-    CreateProject(project_input: ProjectInput): Project!
+    CreateProject(project_input: ProjectInput): Project
 
     # Update an existing project
-    UpdateProject(id: ID!, project_input: ProjectInput): Project!
+    UpdateProject(_id: ID!, project_input: ProjectInput): Project
 
     # Delete an existing project
-    DeleteProject(id: ID!): Project!
+    DeleteProject(_id: ID!): Project!
   }
 `;
 

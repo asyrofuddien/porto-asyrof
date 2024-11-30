@@ -2,6 +2,7 @@ import mongoose, { Schema, Document } from 'mongoose';
 
 // Define the TypeScript interface for the Project model
 interface InterfaceProject extends Document {
+  _id: string;
   project_name: string;
   description: string;
   link: string;
@@ -16,7 +17,7 @@ const ProjectSchema: Schema = new Schema(
     description: { type: String, required: true },
     link: { type: String, required: true },
     image: { type: String, required: true },
-    status: { type: String, enum: ['active', 'inactive', 'completed'], default: 'active' },
+    status: { type: String, enum: ['active', 'deleted'], default: 'active' },
   },
   {
     timestamps: true, // Automatically add createdAt and updatedAt fields

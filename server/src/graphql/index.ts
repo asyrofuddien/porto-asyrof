@@ -1,21 +1,19 @@
 import { gql } from 'apollo-server-express';
 import { merge } from 'lodash';
 import ProjectTypeDefs from './projects/project.typedef';
+import { ProjectResolvers } from './projects/project.resolvers';
 
-// Define GraphQL type definitions
-const typeDef = gql`
+// Base type definitions for Query and Mutation
+const baseTypeDef = gql`
   type Query
   type Mutation
 `;
 
-// Type definitions as an array
-const typeDefs = [typeDef, ProjectTypeDefs];
+// Combine all type definitions
+const typeDefs = [baseTypeDef, ProjectTypeDefs];
 
-// Define resolvers (initially empty, will expand as needed)
-let resolvers: Record<string, any> = {};
-
-// Merge additional resolvers (placeholder for adding more resolvers later)
-resolvers = merge(resolvers);
+// Merge all resolvers
+const resolvers = merge({}, ProjectResolvers);
 
 // Export type definitions and resolvers
 export { typeDefs, resolvers };

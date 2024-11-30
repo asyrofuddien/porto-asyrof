@@ -1,10 +1,13 @@
+// *************** LIBRARY ***************
 import { ApolloError } from 'apollo-server-express';
+
+// *************** MODEL ***************
 import { ProjectModel, InterfaceProject } from './project.model';
 
-// Resolver to get all projects
+// *************** RESOLVERS ***************
 const GetAllProjects = async (): Promise<InterfaceProject[]> => {
   try {
-    const projects = await ProjectModel.find();
+    const projects = await ProjectModel.find({ status: 'active' });
     return projects;
   } catch (error: unknown) {
     if (error instanceof Error) {
@@ -17,10 +20,9 @@ const GetAllProjects = async (): Promise<InterfaceProject[]> => {
   }
 };
 
-// Resolver to get a project by its ID
-const GetProjectById = async (_: any, { id }: { id: string }): Promise<InterfaceProject> => {
+const GetProjectById = async (_: any, { _id }: { _id: string }): Promise<InterfaceProject> => {
   try {
-    const project = await ProjectModel.findById(id);
+    const project = await ProjectModel.findById(_id);
     if (!project) {
       throw new Error('Project not found');
     }
@@ -36,6 +38,7 @@ const GetProjectById = async (_: any, { id }: { id: string }): Promise<Interface
   }
 };
 
+// *************** MUTATION ***************
 async function CreateProject(_: any, { project_input }: { project_input: InterfaceProject }): Promise<InterfaceProject> {
   if (!project_input) {
     throw new ApolloError('Missing Parameter: project_input');
@@ -44,27 +47,46 @@ async function CreateProject(_: any, { project_input }: { project_input: Interfa
   // Find a project with the same name and status 'active'
   const projectExists = await ProjectModel.findOne({
     status: 'active',
-    project_name: project_input.project_name, // Corrected property name
-  });
+    project_name: project_input.project_name,
+  })
+    .select('_id')
+    .lean();
 
   if (projectExists) {
     throw new ApolloError('Project with the same name already exists');
   }
 
   // Create a new project (assuming the model is set up correctly)
-  const newProject = new ProjectModel(project_input);
-  await newProject.save();
+  const newProject = await ProjectModel.create(project_input);
 
-  return newProject; // Return the newly created project
+  if (!newProject) {
+    throw new ApolloError('Missing Parameter: project_input');
+  }
+
+  return newProject;
 }
 
-// Export resolvers
-export const resolvers = {
+async function DeleteProject(_: any, { _id }: { _id: string }): Promise<InterfaceProject> {
+  // *************** Find a project with the same name and status 'active'
+  const projectExists = await ProjectModel.findByIdAndUpdate(_id, {
+    status: 'deleted',
+  });
+
+  if (!projectExists) {
+    throw new ApolloError('Project with the id not found');
+  }
+
+  return projectExists;
+}
+
+// *************** EXPORT ***************
+export const ProjectResolvers = {
   Query: {
     GetAllProjects,
     GetProjectById,
   },
   Mutation: {
-    // Add Mutation resolvers here (Create, Update, Delete)
+    CreateProject,
+    DeleteProject,
   },
 };

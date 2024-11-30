@@ -15,9 +15,3 @@ conn();
 // *************** routes call
 routes(app);
 connGraphQl(app);
-
-const PORT = 4000;
-
-app.listen(PORT, () => {
-  console.log(`🚀Running On Prot http://localhost:${PORT}`);
-});
