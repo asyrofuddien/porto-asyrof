@@ -18,8 +18,9 @@ const articles: Article[] = [
   },
 ];
 
+import Image from 'next/image';
+
 const ArticleComponent: React.FC = () => {
-  // Sort the articles to ensure "Coming Soon" is always last
   const sortedArticles = [...articles].sort((a, b) => (a.title === 'Coming Soon' ? 1 : b.title === 'Coming Soon' ? -1 : 0));
 
   return (
@@ -39,13 +40,9 @@ const ArticleComponent: React.FC = () => {
               >
                 {article.title === 'Coming Soon' ? (
                   <>
-                    {/* Placeholder Image with Overlay */}
+                    {/* Optimized Image for "Coming Soon" */}
                     <div className="relative w-full h-48 rounded-md overflow-hidden mb-4">
-                      <img
-                        src={article.image}
-                        alt={article.title}
-                        className="absolute inset-0 w-full h-full object-cover opacity-50 hover-zoom"
-                      />
+                      <Image src={article.image} alt={article.title} layout="fill" objectFit="cover" className="opacity-50 hover-zoom" />
                       <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center">
                         <h3 className="text-white text-2xl font-bold">Coming Soon</h3>
                       </div>
@@ -67,7 +64,10 @@ const ArticleComponent: React.FC = () => {
                   </>
                 ) : (
                   <>
-                    <img src={article.image} alt={article.title} className="w-full h-48 object-cover rounded-md mb-4 hover-zoom" />
+                    {/* Optimized Image for Other Articles */}
+                    <div className="relative w-full h-48 rounded-md mb-4">
+                      <Image src={article.image} alt={article.title} layout="fill" objectFit="cover" className="hover-zoom" />
+                    </div>
                     <h3 className="text-xl font-semibold text-gray-800 mb-4">{article.title}</h3>
                     <p className="text-gray-600 mb-4">{article.description}</p>
                     <a
