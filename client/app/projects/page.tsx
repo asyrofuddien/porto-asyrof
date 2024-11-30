@@ -1,18 +1,6 @@
 'use client';
 import React from 'react';
-// import { useQuery, gql } from '@apollo/client';
-
-// const projectsData = gql`
-//   query GetAllProjects {
-//     GetAllProjects {
-//       _id
-//       description
-//       image
-//       link
-//       project_name
-//     }
-//   }
-// `;
+import Image from 'next/image';
 
 const projects = [
   {
@@ -33,22 +21,15 @@ const projects = [
   },
   {
     _id: '3',
-    project_name: 'Libary Mobile App',
+    project_name: 'Library Mobile App',
     description:
-      'Access digital books, audiobooks, and media on the go, with easy browsing, searching, and borrowing from local or online libraries',
+      'Access digital books, audiobooks, and media on the go, with easy browsing, searching, and borrowing from local or online libraries.',
     link: 'https://github.com/asyrofuddien/PerpustakaanApp',
     image: 'https://cdn.dribbble.com/users/3475837/screenshots/11355110/media/a451eaee0ef13ee14e124f17990299a9.gif',
   },
 ];
 
 const ProjectsComponent: React.FC = () => {
-  // const { loading, error, data } = useQuery(projectsData);
-
-  // if (loading) return <p>Loading...</p>;
-  // if (error) return <p>Error: {error.message}</p>;
-
-  // const projects = (data && data?.GetAllProjects) || projectLists;
-
   const sortedProjects = [...projects].sort((a, b) => (a.project_name === 'Coming Soon' ? 1 : b.project_name === 'Coming Soon' ? -1 : 0));
 
   return (
@@ -68,35 +49,34 @@ const ProjectsComponent: React.FC = () => {
               >
                 {project.project_name === 'Coming Soon' ? (
                   <>
-                    {/* Placeholder Image with Overlay */}
                     <div className="relative w-full h-48 rounded-md overflow-hidden">
-                      <img
+                      <Image
                         src={project.image}
                         alt={project.project_name}
-                        className="absolute inset-0 w-full h-full object-cover opacity-50 hover-zoom"
+                        layout="fill"
+                        objectFit="cover"
+                        className="absolute inset-0 opacity-50 hover-zoom"
                       />
                       <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center">
                         <h3 className="text-white text-2xl font-bold">Coming Soon</h3>
                       </div>
                     </div>
-
-                    {/* Animated Shimmer Effect */}
                     <div className="my-4 h-2 bg-gradient-to-r from-yellow-300 to-yellow-500 animate-pulse rounded"></div>
-
-                    {/* Project Title */}
                     <h3 className="text-xl font-semibold text-gray-800 mb-2">{project.project_name}</h3>
-
-                    {/* Project Description */}
                     <p className="text-gray-700 mb-4">{project.description}</p>
-
-                    {/* Placeholder Button */}
                     <button disabled className="py-2 px-4 bg-gray-300 text-gray-500 rounded-full cursor-not-allowed">
                       Stay Tuned
                     </button>
                   </>
                 ) : (
                   <>
-                    <img src={project.image} alt={project.project_name} className="w-full h-48 object-cover rounded-md mb-4 hover-zoom" />
+                    <Image
+                      src={project.image}
+                      alt={project.project_name}
+                      width={400}
+                      height={192}
+                      className="w-full h-48 object-cover rounded-md mb-4 hover-zoom"
+                    />
                     <h3 className="text-xl font-semibold text-gray-800 mb-4">{project.project_name}</h3>
                     <p className="text-gray-600 mb-4">{project.description}</p>
                     <a

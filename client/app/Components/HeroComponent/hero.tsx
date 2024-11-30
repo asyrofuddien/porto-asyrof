@@ -10,7 +10,7 @@ const HeroComponent: React.FC = () => {
           alt="Muhammad Asyrofuddien"
           className="w-40 h-40 rounded-full object-cover border-4 border-yellow-400 shadow-lg"
         />
-        <h2 className="text-3xl font-semibold mt-6">I'm</h2>
+        <h2 className="text-3xl font-semibold mt-6">I&#39;m</h2>
         <h1 className="text-5xl font-bold mt-2">Muhammad Asyrofuddien</h1>
         <p className="text-gray-300 max-w-md mt-4">
           A backend developer skilled in Node.js, Express, MongoDB, GraphQL, REST APIs, and Laravel, dedicated to building robust and
