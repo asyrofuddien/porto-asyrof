@@ -1,4 +1,18 @@
+'use client';
 import React from 'react';
+import { useQuery, gql } from '@apollo/client';
+
+const projectsData = gql`
+  query GetAllProjects {
+    GetAllProjects {
+      _id
+      description
+      image
+      link
+      project_name
+    }
+  }
+`;
 
 const projects = [
   {
@@ -28,7 +42,13 @@ const projects = [
 ];
 
 const ProjectsComponent: React.FC = () => {
-  // Ensure "Coming Soon" is always last
+  const { loading, error, data } = useQuery(projectsData);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+
+  const projects = data?.GetAllProjects;
+
   const sortedProjects = [...projects].sort((a, b) => (a.project_name === 'Coming Soon' ? 1 : b.project_name === 'Coming Soon' ? -1 : 0));
 
   return (

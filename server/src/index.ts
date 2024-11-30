@@ -2,6 +2,7 @@ import express from 'express';
 import { routes } from './routes/route';
 import { conn } from './db/connectionMongo';
 import { connGraphQl } from './graphql/graphConnections';
+import cors from 'cors';
 
 import dotenv from 'dotenv';
 
@@ -9,6 +10,9 @@ import dotenv from 'dotenv';
 dotenv.config({ path: '.env-dev' });
 
 const app = express();
+
+// Enable CORS middleware
+app.use(cors());
 
 conn();
 

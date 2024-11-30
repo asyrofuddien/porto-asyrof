@@ -1,11 +1,13 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
-import Head from 'next/head'; // Import Head
 import './globals.css';
 
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/react';
+import { ApolloProvider } from '@apollo/client';
+import createApolloClient from './lib/apolloClient';
 
+// Fonts
 const geistSans = localFont({
   src: './fonts/Roboto-Regular.ttf',
   variable: '--font-geist-sans',
@@ -17,47 +19,53 @@ const geistMono = localFont({
   weight: '100 900',
 });
 
+// Metadata API (preferred way in Next.js)
 export const metadata: Metadata = {
   title: 'Muhammad Asyrofuddien - Backend Developer',
-  description: "i'm backend",
+  description:
+    "I'm a backend developer skilled in Node.js, Express, MongoDB, GraphQL, REST APIs, and Laravel, with over a year of experience.",
   icons: {
     icon: '/img/asyrof.png',
   },
+  openGraph: {
+    title: 'Muhammad Asyrofuddien - Backend Developer',
+    description:
+      'Backend developer skilled in Node.js, Express, MongoDB, GraphQL, REST APIs, and Laravel. Dedicated to building robust and scalable systems.',
+    url: 'https://porto-asyrof.vercel.app/',
+    siteName: 'Muhammad Asyrofuddien - Backend Developer',
+    images: [
+      {
+        url: '/img/heroLaptop.png',
+        width: 800,
+        height: 600,
+        alt: 'Hero image of laptop',
+      },
+    ],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@your_twitter_handle', // Replace with your Twitter handle
+    title: 'Muhammad Asyrofuddien - Backend Developer',
+    description:
+      'Backend developer skilled in Node.js, Express, MongoDB, GraphQL, REST APIs, and Laravel. Dedicated to building robust and scalable systems.',
+    images: ['/img/heroLaptop.png'],
+  },
 };
 
+// Root Layout
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <>
-      <html lang="en" className="!scroll-smooth">
-        <Head>
-          <meta property="twitter:image" content="/img/heroLaptop.png"></meta>
-          <meta property="twitter:card" content="Muhammad Asyrofuddien"></meta>
-          <meta property="twitter:title" content="Muhammad Asyrofuddien - Backend Developer"></meta>
-          <meta
-            property="twitter:description"
-            content="backend developer skilled in Node.js, Express, MongoDB, GraphQL, REST APIs, and Laravel, dedicated to building robust and
-          scalable systems with over a year of professional experience."
-          ></meta>
-          <meta property="og:image" content="/img/heroLaptop.png"></meta>
-          <meta property="og:site_name" content="Muhammad Asyrofuddien - Backend Developer"></meta>
-          <meta property="og:title" content="Link preview title"></meta>
-          <meta
-            property="og:description"
-            content="backend developer skilled in Node.js, Express, MongoDB, GraphQL, REST APIs, and Laravel, dedicated to building robust and
-          scalable systems with over a year of professional experience."
-          />
-          <meta property="og:url" content="https://porto-asyrof.vercel.app/"></meta>
-        </Head>
-        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-          {children}
-          <SpeedInsights />
-          <Analytics />
-        </body>
-      </html>
-    </>
+    <html lang="en" className="!scroll-smooth">
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        {children}
+        <SpeedInsights />
+        <Analytics />
+      </body>
+    </html>
   );
 }

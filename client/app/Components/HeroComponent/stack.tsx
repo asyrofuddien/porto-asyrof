@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 
 const StackComponent: React.FC = () => {
@@ -31,7 +32,11 @@ const StackComponent: React.FC = () => {
           {/* Scrolling container */}
           <div className="flex gap-8 animate-scroll">
             {stacks.map((stack, index) => (
-              <div key={index} className="flex flex-col items-center bg-gray-800 rounded-lg p-4 shadow-md" style={{ minWidth: '150px' }}>
+              <div
+                key={index}
+                className="flex flex-col items-center bg-gray-800 rounded-lg p-4 shadow-md transition-transform duration-300 ease-in-out transform hover:scale-110"
+                style={{ minWidth: '150px' }}
+              >
                 <img src={stack.logo} alt={stack.name} className="h-16 w-16 mb-4" />
                 <p className="text-white text-sm font-semibold">{stack.name}</p>
               </div>
@@ -40,7 +45,7 @@ const StackComponent: React.FC = () => {
             {stacks.map((stack, index) => (
               <div
                 key={`${index}-duplicate`}
-                className="flex flex-col items-center bg-gray-800 rounded-lg p-4 shadow-md"
+                className="flex flex-col items-center bg-gray-800 rounded-lg p-4 shadow-md transition-transform duration-300 ease-in-out transform hover:scale-110"
                 style={{ minWidth: '150px' }}
               >
                 <img src={stack.logo} alt={stack.name} className="h-16 w-16 mb-4" />
