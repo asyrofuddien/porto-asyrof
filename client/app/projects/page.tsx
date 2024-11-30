@@ -14,7 +14,7 @@ const projectsData = gql`
   }
 `;
 
-const projectLists = [
+const projects = [
   {
     _id: '1',
     project_name: 'Kameuble Website',
@@ -42,12 +42,12 @@ const projectLists = [
 ];
 
 const ProjectsComponent: React.FC = () => {
-  const { loading, error, data } = useQuery(projectsData);
+  // const { loading, error, data } = useQuery(projectsData);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+  // if (loading) return <p>Loading...</p>;
+  // if (error) return <p>Error: {error.message}</p>;
 
-  const projects = (data && data?.GetAllProjects) || projectLists;
+  // const projects = (data && data?.GetAllProjects) || projectLists;
 
   const sortedProjects = [...projects].sort((a, b) => (a.project_name === 'Coming Soon' ? 1 : b.project_name === 'Coming Soon' ? -1 : 0));
 

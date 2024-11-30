@@ -13,36 +13,35 @@ const client = createApolloClient();
 
 function Page() {
   return (
-    <ApolloProvider client={client}>
-      <div className="scroll-smooth">
-        <main>
-          {/* Hero + Stack Combined Section */}
-          <section id="hero-stack">
-            <div className="flex flex-col">
-              <NavbarComponent />
-              {/* Hero Section */}
-              <HeroComponent />
-              {/* Stack Section */}
-              <StackComponent />
-            </div>
-          </section>
+    // <ApolloProvider client={client}>
+    <div className="scroll-smooth">
+      <main>
+        {/* Hero + Stack Combined Section */}
+        <section id="hero-stack">
+          <div className="flex flex-col">
+            <NavbarComponent />
+            {/* Hero Section */}
+            <HeroComponent />
+            {/* Stack Section */}
+            <StackComponent />
+          </div>
+        </section>
 
-          {/* Projects Section */}
-          <section id="projects">
-            <ProjectsComponent />
-          </section>
+        {/* Projects Section */}
+        <section id="projects">
+          <ProjectsComponent />
+        </section>
 
-          <section id="article">
-            <ArticleComponent />
-          </section>
-        </main>
+        <section id="article">
+          <ArticleComponent />
+        </section>
+      </main>
 
-        {/* Contact (Footer) Section */}
-        <footer id="contact" className="bg-gradient-to-br from-indigo-500 via-purple-600 to-pink-500 text-white">
-          <ContactComponent />
-        </footer>
-      </div>
-    </ApolloProvider>
+      {/* Contact (Footer) Section */}
+      <footer id="contact" className="bg-gradient-to-br from-indigo-500 via-purple-600 to-pink-500 text-white">
+        <ContactComponent />
+      </footer>
+    </div>
   );
 }
 
