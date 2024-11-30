@@ -1,3 +1,5 @@
+'use clinet';
+
 import { SetStateAction, useState } from 'react';
 import { AiFillSmile, AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 import Link from 'next/link';
