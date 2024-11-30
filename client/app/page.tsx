@@ -6,7 +6,7 @@ import HeroComponent from './Components/HeroComponent/hero';
 import StackComponent from './Components/HeroComponent/stack';
 import ContactComponent from './contact/page';
 import ArticleComponent from './Articles/page';
-import createApolloClient from './lib/apolloClient';
+// import createApolloClient from './lib/apolloClient';
 // import { ApolloProvider } from '@apollo/client';
 
 // const client = createApolloClient();
