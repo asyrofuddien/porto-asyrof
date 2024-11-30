@@ -1,14 +1,17 @@
 {
   "compilerOptions": {
-    "target": "ES2017",
-    "module": "commonjs",
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "typeRoots": ["node_modules/@types"]
+    "target": "ES2020",              // Use modern ES features
+    "module": "commonjs",            // CommonJS for Node.js
+    "outDir": "./dist",              // Compiled output directory
+    "rootDir": "./src",              // Source directory
+    "strict": true,                  // Strict type-checking
+    "esModuleInterop": true,         // Interop with CommonJS
+    "skipLibCheck": true,            // Skip library type checks
+    "typeRoots": ["node_modules/@types"], // Include type definitions
+    "resolveJsonModule": true,       // Allow importing JSON files
+    "allowSyntheticDefaultImports": true, // Default imports compatibility
+    "declaration": true              // Generate .d.ts files
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules"]
+  "include": ["src/**/*"],           // Include all source files
+  "exclude": ["node_modules"]        // Exclude node_modules folder
 }
