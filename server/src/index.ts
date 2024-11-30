@@ -1,5 +1,5 @@
 import express from 'express';
-import { routes } from './routes/route';
+// import { routes } from './routes/route';
 import { conn } from './db/connectionMongo';
 import { connGraphQl } from './graphql/graphConnections';
 import cors from 'cors';
@@ -17,5 +17,5 @@ app.use(cors());
 conn();
 
 // *************** routes call
-routes(app);
+// routes(app);
 connGraphQl(app);
