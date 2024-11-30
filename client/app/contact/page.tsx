@@ -36,6 +36,7 @@ const ContactComponent: React.FC = () => {
       platform: 'CV',
       url: 'https://drive.google.com/uc?id=1IaVr3xEn4s1B0homNsBhWYo2audFe6YU&export=download',
       color: 'bg-gray-800 hover:bg-gray-900',
+      // eslint-disable-next-line @next/next/no-img-element
       icon: <img src="https://img.icons8.com/?size=1500&id=115648&format=png&color=000000" alt="CV" className="h-8 w-8 rounded-full" />,
     },
   ];
