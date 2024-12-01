@@ -10,6 +10,14 @@ interface Article {
 
 const articles: Article[] = [
   {
+    id: '1',
+    title: 'Belajar JavaScript Dasar',
+    description:
+      'Di video ini, kita akan mempelajari dasar-dasar JavaScript, bahasa pemrograman yang paling populer untuk pengembangan web. Video ini cocok untuk pemula yang ingin memulai perjalanan coding mereka atau untuk kalian yang ingin memperkuat fondasi JavaScript.',
+    link: 'https://youtu.be/K-hmqyTAr6Q',
+    image: '/img/Javascript.jpg',
+  },
+  {
     id: '3',
     title: 'Coming Soon',
     description: 'This project is under development and will be revealed soon.',
