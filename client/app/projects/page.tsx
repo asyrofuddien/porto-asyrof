@@ -9,8 +9,7 @@ const projects = [
     description:
       'Kameuble Website is a furniture marketplace built with Laravel and MySQL, featuring Midtrans for payments and Raja Ongkir API for shipping costs.',
     link: 'https://github.com/asyrofuddien/Meubel_Store',
-    image:
-      'https://media.licdn.com/dms/image/v2/D562DAQH3TnDI1aCdrA/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1688071584295?e=1733493600&v=beta&t=wUqy4LFq1jjm0PVbHYxvdSCdqydpStX0KLkJ0QNVnTM',
+    image: '/img/kameube.jpg',
   },
   {
     _id: '2',
