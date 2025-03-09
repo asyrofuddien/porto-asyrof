@@ -1,43 +1,50 @@
+// filepath: e:\Asyrof\porto-asyrof\client\app\projects\page.tsx
 'use client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { gql } from '@apollo/client';
+import createApolloClient from '../lib/apolloClient';
 
-const projects = [
-  {
-    _id: '1',
-    project_name: 'Kameuble Website',
-    description:
-      'Kameuble Website is a furniture marketplace built with Laravel and MySQL, featuring Midtrans for payments and Raja Ongkir API for shipping costs.',
-    link: 'https://github.com/asyrofuddien/Meubel_Store',
-    image: '/img/kameube.jpg',
-  },
-  {
-    _id: '2',
-    project_name: 'Coming Soon',
-    description: 'This project is under development and will be revealed soon.',
-    link: '#',
-    image: 'https://cdn.pixabay.com/photo/2021/08/05/12/36/software-development-6523979_640.jpg',
-  },
-  {
-    _id: '3',
-    project_name: 'Library Mobile App',
-    description:
-      'Access digital books, audiobooks, and media on the go, with easy browsing, searching, and borrowing from local or online libraries.',
-    link: 'https://github.com/asyrofuddien/PerpustakaanApp',
-    image: 'https://cdn.dribbble.com/users/3475837/screenshots/11355110/media/a451eaee0ef13ee14e124f17990299a9.gif',
-  },
-  {
-    _id: '4',
-    project_name: 'Photoboot Online',
-    description:
-      'Photobooth Online is a web-based photobooth that lets you capture, customize, and download photo strips with ease. Choose layouts, take snapshots, and save your memories instantly.',
-    link: 'https://photoboot-aforsy.vercel.app',
-    image: '/img/photobooth.png',
-  },
-];
+const client = createApolloClient();
+
+const GET_PROJECTS = gql`
+  query GetAllProjects {
+    GetAllProjects {
+      _id
+      description
+      image
+      link
+      project_name
+    }
+  }
+`;
 
 const ProjectsComponent: React.FC = () => {
-  const sortedProjects = [...projects].sort((a, b) => (a.project_name === 'Coming Soon' ? 1 : b.project_name === 'Coming Soon' ? -1 : 0));
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<Error | null>(null);
+  const [data, setData] = useState<{ GetAllProjects: any[] } | null>(null);
+
+  useEffect(() => {
+    client
+      .query({ query: GET_PROJECTS })
+      .then((result: { data: { GetAllProjects: any[] } }) => {
+        setData(result.data);
+        setLoading(false);
+      })
+      .catch((error: Error) => {
+        setError(error);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+
+  if (!data || !data.GetAllProjects) {
+    return <p>No projects found.</p>;
+  }
+
+  const sortedProjects = [...data.GetAllProjects].sort((a, b) => (a.project_name === 'Coming Soon' ? 1 : b.project_name === 'Coming Soon' ? -1 : 0));
 
   return (
     <div className="scroll-smooth">
