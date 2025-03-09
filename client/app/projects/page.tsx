@@ -26,6 +26,14 @@ const projects = [
     link: 'https://github.com/asyrofuddien/PerpustakaanApp',
     image: 'https://cdn.dribbble.com/users/3475837/screenshots/11355110/media/a451eaee0ef13ee14e124f17990299a9.gif',
   },
+  {
+    _id: '4',
+    project_name: 'Photoboot Online',
+    description:
+      'Photobooth Online is a web-based photobooth that lets you capture, customize, and download photo strips with ease. Choose layouts, take snapshots, and save your memories instantly.',
+    link: 'https://photoboot-aforsy.vercel.app',
+    image: '/img/photobooth.png',
+  },
 ];
 
 const ProjectsComponent: React.FC = () => {
@@ -40,11 +48,10 @@ const ProjectsComponent: React.FC = () => {
             {sortedProjects.map((project) => (
               <div
                 key={project._id}
-                className={`${
-                  project.project_name === 'Coming Soon'
-                    ? 'relative bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-lg shadow-lg overflow-hidden p-6 text-center'
-                    : 'bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition-shadow'
-                }`}
+                className={`${project.project_name === 'Coming Soon'
+                  ? 'relative bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-lg shadow-lg overflow-hidden p-6 text-center'
+                  : 'bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition-shadow'
+                  }`}
               >
                 {project.project_name === 'Coming Soon' ? (
                   <>
