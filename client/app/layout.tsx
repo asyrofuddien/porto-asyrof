@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   description:
     "I'm a backend developer skilled in Node.js, Express, MongoDB, GraphQL, REST APIs, and Laravel, with over a year of experience.",
   icons: {
-    icon: '/img/asyrof.png',
+    icon: 'logo.png',
   },
   openGraph: {
     title: 'Muhammad Asyrofuddien - Backend Developer',
