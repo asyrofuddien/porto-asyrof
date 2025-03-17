@@ -13,7 +13,14 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 });
 
 const httpLink = new HttpLink({
-  uri: 'http://localhost:4005/graphql', // Replace with your GraphQL endpoint
+  uri: 'http://103.196.155.17:4000/graphql',
+  fetchOptions: {
+    mode: 'no-cors', // Coba tambahkan ini jika masih terjadi error CORS
+  },
+  headers: {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*', // Hanya untuk debugging, jangan di production
+  },
 });
 
 const createApolloClient = () => {
