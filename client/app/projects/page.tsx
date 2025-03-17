@@ -1,9 +1,16 @@
-// filepath: e:\Asyrof\porto-asyrof\client\app\projects\page.tsx
 'use client';
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { gql } from '@apollo/client';
 import createApolloClient from '../lib/apolloClient';
+
+interface Project {
+  _id: string;
+  description: string;
+  image: string;
+  link: string;
+  project_name: string;
+}
 
 const client = createApolloClient();
 
@@ -22,12 +29,12 @@ const GET_PROJECTS = gql`
 const ProjectsComponent: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
-  const [data, setData] = useState<{ GetAllProjects: any[] } | null>(null);
+  const [data, setData] = useState<{ GetAllProjects: Project[] } | null>(null);
 
   useEffect(() => {
     client
       .query({ query: GET_PROJECTS })
-      .then((result: { data: { GetAllProjects: any[] } }) => {
+      .then((result: { data: { GetAllProjects: Project[] } }) => {
         setData(result.data);
         setLoading(false);
       })

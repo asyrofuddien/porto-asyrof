@@ -12,22 +12,16 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
   }
 });
 
-const httpLink = new HttpLink({
-  uri: 'http://103.196.155.17:4000/graphql',
-  fetchOptions: {
-    mode: 'no-cors', // Coba tambahkan ini jika masih terjadi error CORS
-  },
-  headers: {
-    'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*', // Hanya untuk debugging, jangan di production
-  },
-});
-
 const createApolloClient = () => {
   return new ApolloClient({
-    link: ApolloLink.from([errorLink, httpLink]),
+    uri: "http://103.196.155.17:4000/graphql", // URL backend
     cache: new InMemoryCache(),
-    ssrMode: typeof window === 'undefined', // Enables SSR mode on the server
+    defaultOptions: {
+      watchQuery: {
+        fetchPolicy: "no-cache", // Hindari cache lama
+        errorPolicy: "all",
+      },
+    },
   });
 };
 
